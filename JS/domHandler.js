@@ -1,7 +1,6 @@
 /////////CLEAR ALL BUTTON///////////////
 //retrieve ID of "Clear Message Board" button//	
 var messageContainer = $("#messageContainer")[0];
-var bodyEl = $("body")[0];
 
 
 $(".individualMessage").contentEditable = "true"
@@ -17,15 +16,15 @@ function clearBoard() {
 
 /////////CHECKBOXES///////////////
 $("#darkTheme").on("change", function changeTheme() {
-	bodyEl.classList.toggle("dark");
-	messageContainer.classList.toggle("dark");
-	getNav.classList.toggle("dark");
+	$("body").toggleClass("dark");
+	$("#messageContainer").toggleClass("dark");
+	$("nav").toggleClass("dark");
 });
 //////////LARGE TEXT////////////////
 $("#largeText").on("change", function changesize() {
-	bodyEl.classList.toggle("large");
-	messageContainer.classList.toggle("large");
-	getNav.classList.toggle("large");
+	$("body").toggleClass("large");
+	$("#messageContainer").toggleClass("large");
+	$("nav").toggleClass("large");
 
 });
 

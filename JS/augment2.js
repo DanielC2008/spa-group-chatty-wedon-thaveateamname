@@ -1,6 +1,6 @@
 var Chatty = (function (originalChatty) {
-	var getInput = document.getElementById("userInput");
-	var getOutput = document.getElementById("messageContainer");
+	var getInput = $("#userInput")[0];
+	var getOutput = $("#messageContainer")[0];
 
 
 	originalChatty.retrieveInput = function retrieveInput(event) {
@@ -20,7 +20,7 @@ var Chatty = (function (originalChatty) {
 				getInput.value = " ";
 		}
 	};
-	getInput.addEventListener("keypress", Chatty.retrieveInput)
+	$("#userInput").keypress(Chatty.retrieveInput);
 
 	return originalChatty;
 })(Chatty || {});

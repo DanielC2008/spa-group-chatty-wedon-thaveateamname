@@ -1,18 +1,13 @@
 /////////CLEAR ALL BUTTON///////////////
-//retrieve ID of "Clear Message Board" button//
-var clearButton = document.getElementById("clearButton");
-var getMessage = document.getElementsByClassName("individualMessage");
-var messageContainer = document.getElementById("messageContainer");
-var getNav = document.getElementById("navBar");
-var darkTheme = document.getElementById("darkTheme");
-var largeText = document.getElementById("largeText");
-var bodyEl = document.body;
-var input = document.getElementById("userInput");
+//retrieve ID of "Clear Message Board" button//	
+var messageContainer = $("#messageContainer")[0];
+var bodyEl = $("body")[0];
 
-getMessage.contentEditable = "true"
+
+$(".individualMessage").contentEditable = "true"
 
 //Event to clear board//
-clearButton.addEventListener("click", clearBoard);
+$("#clearButton").click(clearBoard);
 
 //Function to clear//
 function clearBoard() {
@@ -21,13 +16,13 @@ function clearBoard() {
 
 
 /////////CHECKBOXES///////////////
-darkTheme.addEventListener("change", function changeTheme() {
+$("#darkTheme").on("change", function changeTheme() {
 	bodyEl.classList.toggle("dark");
 	messageContainer.classList.toggle("dark");
 	getNav.classList.toggle("dark");
 });
 //////////LARGE TEXT////////////////
-largeText.addEventListener("change", function changesize() {
+$("#largeText").on("change", function changesize() {
 	bodyEl.classList.toggle("large");
 	messageContainer.classList.toggle("large");
 	getNav.classList.toggle("large");
@@ -37,13 +32,13 @@ largeText.addEventListener("change", function changesize() {
 
 /////////DISABLE BUTTON///////////////
 
-input.addEventListener("keypress", function enableButton () {
+$("#input").on("keypress", function enableButton () {
 	if (messageContainer.innerHTML !== "") {
 		clearButton.disabled = false;
 	}
 });
 
-bodyEl.addEventListener("click", function disabledButton () {
+messageContainer.click(function() {
 	if (messageContainer.childNodes.length === 0) {
 		clearButton.disabled = true;
 	}

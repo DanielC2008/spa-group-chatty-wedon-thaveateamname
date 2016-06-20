@@ -2,10 +2,9 @@ var Chatty = (function(oldIife) {
 
 
 	//retrieves ID of container//
-	var messageContainer = document.getElementById("messageContainer");
 
 	//Event calling function for new button ID//
-	messageContainer.addEventListener("click", buttonGet);
+	$("#messageContainer").on("click", buttonGet);
 
 	//Button getter function -- splits off "--" to isolate button #//
 	function buttonGet() {

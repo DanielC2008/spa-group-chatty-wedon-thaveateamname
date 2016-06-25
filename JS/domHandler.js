@@ -1,16 +1,17 @@
+"use strict";
 /////////CLEAR ALL BUTTON///////////////
 //retrieve ID of "Clear Message Board" button//	
 var messageContainer = $("#messageContainer")[0];
 
 
-$(".individualMessage").contentEditable = "true"
+$(".individualMessage").contentEditable = "true";
 
 //Event to clear board//
 $("#clearButton").click(clearBoard);
 
 //Function to clear//
 function clearBoard() {
-	messageContainer.innerHTML = "";
+	$("#messageContainer").text(null);
 }
 
 
@@ -30,20 +31,19 @@ $("#largeText").on("change", function changesize() {
 
 
 /////////DISABLE BUTTON///////////////
-
-$("#input").on("keypress", function enableButton () {
-	if (messageContainer.innerHTML !== "") {
-		clearButton.disabled = false;
+$("#userInput").keypress(function() {
+	if ($("#messageContainer").is(":parent")) {
+		$("#clearButton").prop("disabled", false);
 	}
 });
 
-messageContainer.click(function() {
-	if (messageContainer.childNodes.length === 0) {
-		clearButton.disabled = true;
+$(":button").on("click", function() {
+	if ($("#messageContainer").is(":empty")) {
+		$("#clearButton").prop("disabled", true);
 	}
-	else if (messageContainer.childNodes.length > 0) {
-				clearButton.disabled = false;
-	}
+	// else if ($("#messageContainer").has(":children")) {
+	// 	$("#clearButton").prop("enabled", false);	
+	// }
 });	
 
 

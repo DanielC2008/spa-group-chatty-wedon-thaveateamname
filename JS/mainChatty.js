@@ -1,4 +1,5 @@
- var Chatty = (function(oldIife) {
+"use strict";
+var Chatty = (function(oldIife) {
 
   var messageArray = [];
 
@@ -32,7 +33,7 @@ function xhrTransferError() {
 }
   function parseData(data) {
     messageArray = data.messages;
-    for (currentMessage in messageArray) {
+    for(var currentMessage in messageArray) {
       var messageCard = "";
       var originalMessage = messageArray[currentMessage];
       counter++;

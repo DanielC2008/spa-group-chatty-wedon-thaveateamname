@@ -1,0 +1,27 @@
+{
+  "name": "spa-group-chatty-wedon-thaveateamname",
+  "version": "1.0.0",
+  "description": "Every teammate copy and run the following commands in the host machine terminal.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielC2008/spa-group-chatty-wedon-thaveateamname.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielC2008/spa-group-chatty-wedon-thaveateamname/issues"
+  },
+  "homepage": "https://github.com/DanielC2008/spa-group-chatty-wedon-thaveateamname#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-watch": "^4.3.8",
+    "jquery": "^3.0.0",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0"
+  }
+}

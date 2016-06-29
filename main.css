@@ -126,6 +126,7 @@ MESSAGE BOX
 
 .deleteButton {
   margin: 1%;
+  float: right;
 }
 
 article {

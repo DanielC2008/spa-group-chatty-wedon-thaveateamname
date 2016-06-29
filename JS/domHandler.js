@@ -1,55 +1,49 @@
+"use strict";
 /////////CLEAR ALL BUTTON///////////////
-//retrieve ID of "Clear Message Board" button//
-var clearButton = document.getElementById("clearButton");
-var getMessage = document.getElementsByClassName("individualMessage");
-var messageContainer = document.getElementById("messageContainer");
-var getNav = document.getElementById("navBar");
-var darkTheme = document.getElementById("darkTheme");
-var largeText = document.getElementById("largeText");
-var bodyEl = document.body;
-var input = document.getElementById("userInput");
+//retrieve ID of "Clear Message Board" button//	
+var messageContainer = $("#messageContainer")[0];
 
-getMessage.contentEditable = "true"
+
+$(".individualMessage").contentEditable = "true";
 
 //Event to clear board//
-clearButton.addEventListener("click", clearBoard);
+$("#clearButton").click(clearBoard);
 
 //Function to clear//
 function clearBoard() {
-	messageContainer.innerHTML = "";
+	$("#messageContainer").text(null);
 }
 
 
 /////////CHECKBOXES///////////////
-darkTheme.addEventListener("change", function changeTheme() {
-	bodyEl.classList.toggle("dark");
-	messageContainer.classList.toggle("dark");
-	getNav.classList.toggle("dark");
+$("#darkTheme").on("change", function changeTheme() {
+	$("body").toggleClass("dark");
+	$("#messageContainer").toggleClass("dark");
+	$("nav").toggleClass("dark");
 });
 //////////LARGE TEXT////////////////
-largeText.addEventListener("change", function changesize() {
-	bodyEl.classList.toggle("large");
-	messageContainer.classList.toggle("large");
-	getNav.classList.toggle("large");
+$("#largeText").on("change", function changesize() {
+	$("body").toggleClass("large");
+	$("#messageContainer").toggleClass("large");
+	$("nav").toggleClass("large");
 
 });
 
 
 /////////DISABLE BUTTON///////////////
-
-input.addEventListener("keypress", function enableButton () {
-	if (messageContainer.innerHTML !== "") {
-		clearButton.disabled = false;
+$("#userInput").keypress(function() {
+	if ($("#messageContainer").is(":parent")) {
+		$("#clearButton").prop("disabled", false);
 	}
 });
 
-bodyEl.addEventListener("click", function disabledButton () {
-	if (messageContainer.childNodes.length === 0) {
-		clearButton.disabled = true;
+$(":button").on("click", function() {
+	if ($("#messageContainer").is(":empty")) {
+		$("#clearButton").prop("disabled", true);
 	}
-	else if (messageContainer.childNodes.length > 0) {
-				clearButton.disabled = false;
-	}
+	// else if ($("#messageContainer").has(":children")) {
+	// 	$("#clearButton").prop("enabled", false);	
+	// }
 });	
 
 

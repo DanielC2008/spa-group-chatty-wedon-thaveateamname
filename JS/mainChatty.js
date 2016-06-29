@@ -1,4 +1,5 @@
- var Chatty = (function(oldIife) {
+"use strict";
+var Chatty = (function(oldIife) {
 
   var messageArray = [];
 
@@ -6,19 +7,22 @@
     messageArray.push({message});
   };
 
-  var messageRequest = new XMLHttpRequest();
+  $.ajax({
+    url:"initialMessage.json" 
+  }).done(parseData);
 
-  messageRequest.open("GET", "initialMessage.json");
+  // var messageRequest = new XMLHttpRequest();
 
-  messageRequest.send();
+  // messageRequest.open("GET", "initialMessage.json");
 
-  messageRequest.addEventListener("error", xhrTransferError);
+  // messageRequest.send();
 
-  messageRequest.addEventListener("load", parseData);
+  // messageRequest.addEventListener("error", xhrTransferError);
+
+  // messageRequest.addEventListener("load", parseData);
 
   var counter = 0;
 
-  var newMessages = document.getElementById("messageContainer");
 
   oldIife.getMessageArray = function() {
     return messageArray;
@@ -27,21 +31,20 @@
 function xhrTransferError() {
   // console.log("error", An error occurred while transfering the data);
 }
-  function parseData() {
-    messageArray = JSON.parse(this.responseText).messages;
-    for (currentMessage in messageArray) {
+  function parseData(data) {
+    messageArray = data.messages;
+    for(var currentMessage in messageArray) {
       var messageCard = "";
       var originalMessage = messageArray[currentMessage];
-
       counter++;
-      messageCard = `<div id="message--${counter}" class="individualMessage">${originalMessage.message}<button id="deleteMessage--${counter}" class="deleteButton">Delete</button></div>`;
+      $("#messageContainer").append(`<article id=cardWrapper--${counter}><div id="message--${counter}" class="individualMessage">${originalMessage.message}<button id="deleteMessage--${counter}" class="deleteButton">Delete</button></div></article>`);
+      // var newDiv = document.createElement("article");
+      // newDiv.innerHTML = messageCard;
+      // var newAttr = document.createAttribute("id");
+      // newAttr.value = `cardWrapper--${counter}`;
+      // newDiv.setAttributeNode(newAttr);
+      // newMessages.appendChild(newDiv);
 
-      var newDiv = document.createElement("article");
-      newDiv.innerHTML = messageCard;
-      var newAttr = document.createAttribute("id");
-      newAttr.value = `cardWrapper--${counter}`;
-      newDiv.setAttributeNode(newAttr);
-      newMessages.appendChild(newDiv);
     }
   }
 
